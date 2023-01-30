@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+
+ <title>User Registration</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<body>
+    <button onclick="window.location.href = '/';">Back</button>
+
+<div class="jumbotron text-center">
+    <h1>User Login</h1>
+    </div>
+    <form method="POST" class="text-center">
+<input type='text' name='Email' autocomplete='off' placeholder="Email" required>
+        <p></p>
+<input type='text' name='Password' autocomplete='off' placeholder="Password" required>
+        <input type='submit' placeholder="Submit" required>
+</form>
+        <div class="container text-center">
+            {% for message in get_flashed_messages() %}
+                <p>{{message}}</p>
+            {% endfor %}
+        </div>
+
+</div>
+</body>
+</html>

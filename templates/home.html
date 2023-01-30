@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'bootstrap/base.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <button onclick="window.location.href = '/logout';">Logout</button>
+<div class="jumbotron text-center">
+</div>
+
+
+{% block scripts %}
+{{super()}}
+{{moment.include_moment()}}
+    {% endblock %}
+
+{% block content %}
+
+<div class="jumbotron" id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                 <h1>{{session['user-info']['FirstName']}}'s Diary</h1>
+    </div>
+            <div class="container">
+                <form method="POST" action="">
+                    <textarea name="content" rows = "3" class="form_control" ></textarea>
+                <input type="submit" placeholder="Save" class="btn btn-success">
+                </form>
+            </div>
+        </div>
+            <div class="col-md-6 text-right">
+    <p>Login Time: {{moment(session['user-info']['loginTime']).format('h.mm A')}}</p>
+    </div>
+    </div>
+
+
+
+</div>
+
+<div class="text-center">
+    {%for entry in entries %}
+{{entry['content']}}<br>
+    {{moment(entry['time']).format('LLLL')}}<br>
+    {{moment(entry['time']).fromNow()}}<br>
+
+
+    {% endfor %}
+    </div>
+
+{% endblock %}
+
+</body>
+</html>
